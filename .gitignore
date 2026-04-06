@@ -1,0 +1,17 @@
+node_modules/
+**/node_modules/
+.pnpm-store/
+
+dist/
+**/dist/
+coverage/
+
+*.log
+pnpm-debug.log*
+*.tsbuildinfo
+
+.DS_Store
+Thumbs.db
+
+.idea/
+.vscode/

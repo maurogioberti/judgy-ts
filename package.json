@@ -1,0 +1,26 @@
+{
+  "name": "judgy",
+  "private": true,
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm --filter \"./packages/*\" -r build",
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config jest.config.mjs",
+    "test:samples": "pnpm --filter \"./samples/*\" -r test",
+    "test:sample:semantic-evaluation": "pnpm --filter @judgy/sample-semantic-evaluation test",
+    "test:sample:expect-jest": "pnpm --filter @judgy/sample-expect-jest test",
+    "test:sample:expect-vitest": "pnpm --filter @judgy/sample-expect-vitest test",
+    "typecheck": "pnpm --filter \"./packages/*\" -r build && pnpm --filter \"./packages/*\" -r typecheck && pnpm --filter \"./samples/*\" -r typecheck"
+  },
+  "devDependencies": {
+    "@jest/globals": "^30.3.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.5.2",
+    "expect": "^30.3.0",
+    "jest": "^30.3.0",
+    "ts-jest": "^29.4.9",
+    "typescript": "^5.9.2"
+  }
+}
