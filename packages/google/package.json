@@ -1,0 +1,32 @@
+{
+  "name": "@judgy/google",
+  "version": "0.1.0",
+  "description": "Google provider for Judgy TypeScript.",
+  "license": "MIT",
+  "author": "Mauro Gioberti",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maurogioberti/judgy-ts.git"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@judgy/core": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js --config jest.config.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}
