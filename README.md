@@ -137,11 +137,13 @@ Judgy keeps provider calls, semantic evaluation, and assertion policy separate s
 
 ## Samples
 
-The repository includes runnable samples under `samples/`:
+The repository includes runnable samples under [`samples/`](samples/README.md):
 
-- `semantic-evaluation` shows the lower-level evaluator and assertion policy flow
+- `semantic-evaluation` shows the lower-level evaluator and assertion policy flow with `HttpProvider` as the source and `OllamaProvider` as the judge
 - `expect-jest` shows `@judgy/expect` with Jest
 - `expect-vitest` shows `@judgy/expect` with Vitest
+
+All samples use `OllamaProvider` by default because it runs locally without a hosted API key. You can swap in any supported provider package as the judge.
 
 ## Status
 
