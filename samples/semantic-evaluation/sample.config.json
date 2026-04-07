@@ -1,0 +1,13 @@
+{
+  "sourceApi": {
+    "endpoint": "http://localhost:11434/api/chat",
+    "requestTemplate": "{\"model\":\"llama3:8b\",\"messages\":[{\"role\":\"user\",\"content\":\"{{prompt}}\"}],\"stream\":false}",
+    "responseJsonPath": "$.message.content",
+    "timeoutMs": 60000
+  },
+  "judgeOllama": {
+    "baseUrl": "http://localhost:11434",
+    "model": "llama3:8b",
+    "timeoutMs": 120000
+  }
+}
