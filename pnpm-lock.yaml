@@ -32,13 +32,13 @@ importers:
 
   packages/anthropic:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../core
 
   packages/azure-openai:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../core
 
@@ -46,13 +46,13 @@ importers:
 
   packages/deepseek:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../core
 
   packages/expect:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../core
       expect:
@@ -61,49 +61,49 @@ importers:
 
   packages/google:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../core
 
   packages/http:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../core
 
   packages/mistral:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../core
 
   packages/moonshot:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../core
 
   packages/ollama:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../core
 
   packages/openai:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../core
 
   samples/expect-jest:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@judgy/expect':
+      '@judgy-ts/expect':
         specifier: workspace:*
         version: link:../../packages/expect
-      '@judgy/ollama':
+      '@judgy-ts/ollama':
         specifier: workspace:*
         version: link:../../packages/ollama
     devDependencies:
@@ -113,13 +113,13 @@ importers:
 
   samples/expect-vitest:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@judgy/expect':
+      '@judgy-ts/expect':
         specifier: workspace:*
         version: link:../../packages/expect
-      '@judgy/ollama':
+      '@judgy-ts/ollama':
         specifier: workspace:*
         version: link:../../packages/ollama
     devDependencies:
@@ -129,13 +129,13 @@ importers:
 
   samples/semantic-evaluation:
     dependencies:
-      '@judgy/core':
+      '@judgy-ts/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@judgy/http':
+      '@judgy-ts/http':
         specifier: workspace:*
         version: link:../../packages/http
-      '@judgy/ollama':
+      '@judgy-ts/ollama':
         specifier: workspace:*
         version: link:../../packages/ollama
     devDependencies:

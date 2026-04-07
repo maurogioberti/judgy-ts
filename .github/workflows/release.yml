@@ -28,7 +28,6 @@ jobs:
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
           registry-url: https://registry.npmjs.org
-          scope: "@judgy-ts"
 
       - name: Determine release package
         id: package
@@ -73,15 +72,25 @@ jobs:
         run: |
           tar -tzf artifacts/packages/*.tgz | grep "^package/README.md$"
 
+      - name: Verify npm auth is configured
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "NPM_TOKEN secret is not available. Ensure it is configured in the npmjs-org environment."
+            exit 1
+          fi
+          npm whoami --registry https://registry.npmjs.org
+
       - name: Publish package to npm
         working-directory: packages/core
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm publish --access public --no-git-checks
+        run: npm publish --access public
 
       - name: Upload package artifact
         uses: actions/upload-artifact@v6
         with:
-          name: ${{ steps.package.outputs.name }}-${{ steps.package.outputs.version }}
+          name: judgy-ts-core-${{ steps.package.outputs.version }}
           path: artifacts/packages/*.tgz
           if-no-files-found: error
