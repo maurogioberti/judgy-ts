@@ -1,4 +1,4 @@
-import { LlmResponse } from "@judgy/core";
+import { LlmResponse } from "@judgy-ts/core";
 
 const PROVIDER_NAME = "Google";
 

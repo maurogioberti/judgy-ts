@@ -9,9 +9,9 @@
     "build": "pnpm --filter \"./packages/*\" -r build",
     "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config jest.config.mjs",
     "test:samples": "pnpm --filter \"./samples/*\" -r test",
-    "test:sample:semantic-evaluation": "pnpm --filter @judgy/sample-semantic-evaluation test",
-    "test:sample:expect-jest": "pnpm --filter @judgy/sample-expect-jest test",
-    "test:sample:expect-vitest": "pnpm --filter @judgy/sample-expect-vitest test",
+    "test:sample:semantic-evaluation": "pnpm --filter @judgy-ts/sample-semantic-evaluation test",
+    "test:sample:expect-jest": "pnpm --filter @judgy-ts/sample-expect-jest test",
+    "test:sample:expect-vitest": "pnpm --filter @judgy-ts/sample-expect-vitest test",
     "typecheck": "pnpm --filter \"./packages/*\" -r build && pnpm --filter \"./packages/*\" -r typecheck && pnpm --filter \"./samples/*\" -r typecheck"
   },
   "devDependencies": {

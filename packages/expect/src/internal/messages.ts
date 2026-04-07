@@ -1,4 +1,4 @@
-import type { EvaluationResult } from "@judgy/core";
+import type { EvaluationResult } from "@judgy-ts/core";
 
 import type { JudgySemanticExpectation } from "../contracts.js";
 

@@ -1,5 +1,5 @@
 {
-  "name": "@judgy/anthropic",
+  "name": "@judgy-ts/anthropic",
   "version": "0.1.0",
   "description": "Anthropic provider for Judgy TypeScript.",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "dist"
   ],
   "dependencies": {
-    "@judgy/core": "workspace:*"
+    "@judgy-ts/core": "workspace:*"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

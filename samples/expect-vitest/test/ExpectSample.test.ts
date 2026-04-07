@@ -3,7 +3,7 @@ import {
   expect,
   it
 } from "vitest";
-import { judgyMatchers } from "@judgy/expect";
+import { judgyMatchers } from "@judgy-ts/expect";
 
 import {
   createJudgeEvaluator,

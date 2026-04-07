@@ -1,4 +1,4 @@
-import { type LlmRequest } from "@judgy/core";
+import { type LlmRequest } from "@judgy-ts/core";
 
 interface ChatMessage {
   readonly role: "system" | "user";

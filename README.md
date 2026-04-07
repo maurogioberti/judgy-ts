@@ -6,30 +6,30 @@ Instead of asserting on exact strings, Judgy lets you evaluate whether generated
 
 ## Providers Are Optional
 
-`@judgy/core` defines the provider contract used by `SemanticEvaluator`:
+`@judgy-ts/core` defines the provider contract used by `SemanticEvaluator`:
 
 - `LlmProvider`
 - `LlmRequest`
 - `LlmResponse`
 
-That means the `@judgy/*` provider packages are optional implementations. You can use the built-in providers for common model runtimes, or implement `LlmProvider` yourself if you want to connect Judgy to your own gateway, SDK, wrapper, or in-house service.
+That means the `@judgy-ts/*` provider packages are optional implementations. You can use the built-in providers for common model runtimes, or implement `LlmProvider` yourself if you want to connect Judgy to your own gateway, SDK, wrapper, or in-house service.
 
 ## Install The Packages You Need
 
-Install the core package, add `@judgy/expect` if you want high-level `expect(...)` matchers, and then choose the provider package that matches your model runtime:
+Install the core package, add `@judgy-ts/expect` if you want high-level `expect(...)` matchers, and then choose the provider package that matches your model runtime:
 
 ```bash
-npm install @judgy/core @judgy/expect
+npm install @judgy-ts/core @judgy-ts/expect
 
-npm install @judgy/http
-npm install @judgy/ollama
-npm install @judgy/openai
-npm install @judgy/anthropic
-npm install @judgy/google
-npm install @judgy/azure-openai
-npm install @judgy/mistral
-npm install @judgy/moonshot
-npm install @judgy/deepseek
+npm install @judgy-ts/http
+npm install @judgy-ts/ollama
+npm install @judgy-ts/openai
+npm install @judgy-ts/anthropic
+npm install @judgy-ts/google
+npm install @judgy-ts/azure-openai
+npm install @judgy-ts/mistral
+npm install @judgy-ts/moonshot
+npm install @judgy-ts/deepseek
 ```
 
 If you already have your own LLM integration, you can skip the optional provider packages and implement `LlmProvider` directly.
@@ -38,26 +38,26 @@ If you already have your own LLM integration, you can skip the optional provider
 
 | Package | Purpose |
 | --- | --- |
-| `@judgy/core` | Core evaluation models, provider contracts, and assertion policy primitives |
-| `@judgy/expect` | High-level `expect(...)` matchers for semantic testing |
-| `@judgy/http` | Optional generic HTTP provider for text-producing endpoints |
-| `@judgy/ollama` | Optional Ollama provider |
-| `@judgy/openai` | Optional OpenAI provider |
-| `@judgy/anthropic` | Optional Anthropic provider |
-| `@judgy/google` | Optional Google provider |
-| `@judgy/azure-openai` | Optional Azure OpenAI provider |
-| `@judgy/mistral` | Optional Mistral provider |
-| `@judgy/moonshot` | Optional Moonshot provider |
-| `@judgy/deepseek` | Optional DeepSeek provider |
+| `@judgy-ts/core` | Core evaluation models, provider contracts, and assertion policy primitives |
+| `@judgy-ts/expect` | High-level `expect(...)` matchers for semantic testing |
+| `@judgy-ts/http` | Optional generic HTTP provider for text-producing endpoints |
+| `@judgy-ts/ollama` | Optional Ollama provider |
+| `@judgy-ts/openai` | Optional OpenAI provider |
+| `@judgy-ts/anthropic` | Optional Anthropic provider |
+| `@judgy-ts/google` | Optional Google provider |
+| `@judgy-ts/azure-openai` | Optional Azure OpenAI provider |
+| `@judgy-ts/mistral` | Optional Mistral provider |
+| `@judgy-ts/moonshot` | Optional Moonshot provider |
+| `@judgy-ts/deepseek` | Optional DeepSeek provider |
 
 ## Quick Start With `expect(...)`
 
-The example below uses `@judgy/openai`, but the same evaluator flow works with any supported provider package.
+The example below uses `@judgy-ts/openai`, but the same evaluator flow works with any supported provider package.
 
 ```ts
-import { SemanticEvaluator } from "@judgy/core";
-import { judgyMatchers } from "@judgy/expect";
-import { OpenAiProvider } from "@judgy/openai";
+import { SemanticEvaluator } from "@judgy-ts/core";
+import { judgyMatchers } from "@judgy-ts/expect";
+import { OpenAiProvider } from "@judgy-ts/openai";
 import { expect } from "@jest/globals";
 
 expect.extend(judgyMatchers);
@@ -76,7 +76,7 @@ await expect({
 }).toJudgy({ minimumScore: 0.8 });
 ```
 
-## Quick Start With `@judgy/core`
+## Quick Start With `@judgy-ts/core`
 
 If you want lower-level control, use the evaluator and assertion policy directly:
 
@@ -84,8 +84,8 @@ If you want lower-level control, use the evaluator and assertion policy directly
 import {
   SemanticEvaluator,
   evaluateSemanticAssertion
-} from "@judgy/core";
-import { OpenAiProvider } from "@judgy/openai";
+} from "@judgy-ts/core";
+import { OpenAiProvider } from "@judgy-ts/openai";
 
 const provider = new OpenAiProvider({
   apiKey: process.env.OPENAI_API_KEY!,
@@ -110,7 +110,7 @@ import {
   LlmRequest,
   LlmResponse,
   type LlmProvider
-} from "@judgy/core";
+} from "@judgy-ts/core";
 
 class MyProvider implements LlmProvider {
   async complete(request: LlmRequest): Promise<LlmResponse> {
@@ -140,8 +140,8 @@ Judgy keeps provider calls, semantic evaluation, and assertion policy separate s
 The repository includes runnable samples under [`samples/`](samples/README.md):
 
 - `semantic-evaluation` shows the lower-level evaluator and assertion policy flow with `HttpProvider` as the source and `OllamaProvider` as the judge
-- `expect-jest` shows `@judgy/expect` with Jest
-- `expect-vitest` shows `@judgy/expect` with Vitest
+- `expect-jest` shows `@judgy-ts/expect` with Jest
+- `expect-vitest` shows `@judgy-ts/expect` with Vitest
 
 All samples use `OllamaProvider` by default because it runs locally without a hosted API key. You can swap in any supported provider package as the judge.
 

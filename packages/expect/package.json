@@ -1,5 +1,5 @@
 {
-  "name": "@judgy/expect",
+  "name": "@judgy-ts/expect",
   "version": "0.1.0",
   "description": "High-level expect-style testing package for Judgy TypeScript.",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "dist"
   ],
   "dependencies": {
-    "@judgy/core": "workspace:*",
+    "@judgy-ts/core": "workspace:*",
     "expect": "^30.3.0"
   },
   "scripts": {

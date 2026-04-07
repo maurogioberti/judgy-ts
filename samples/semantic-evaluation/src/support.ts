@@ -1,6 +1,6 @@
-import { LlmRequest, SemanticEvaluator } from "@judgy/core";
-import { HttpProvider } from "@judgy/http";
-import { OllamaProvider } from "@judgy/ollama";
+import { LlmRequest, SemanticEvaluator } from "@judgy-ts/core";
+import { HttpProvider } from "@judgy-ts/http";
+import { OllamaProvider } from "@judgy-ts/ollama";
 
 import { loadSampleSettings } from "./settings.js";
 

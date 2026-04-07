@@ -1,6 +1,6 @@
 import { describe, expect, it } from "@jest/globals";
 
-import { LlmRequest } from "@judgy/core";
+import { LlmRequest } from "@judgy-ts/core";
 
 import { HttpProvider } from "../src/index.js";
 

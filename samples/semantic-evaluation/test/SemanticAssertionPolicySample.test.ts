@@ -1,7 +1,7 @@
 import {
   evaluateSemanticAssertion,
   formatAssertionFailureMessage
-} from "@judgy/core";
+} from "@judgy-ts/core";
 import { describe, it } from "@jest/globals";
 
 import {

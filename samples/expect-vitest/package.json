@@ -1,12 +1,12 @@
 {
-  "name": "@judgy/sample-expect-vitest",
+  "name": "@judgy-ts/sample-expect-vitest",
   "version": "0.1.0",
   "type": "module",
   "description": "Vitest sample for Judgy TypeScript expect matchers.",
   "dependencies": {
-    "@judgy/core": "workspace:*",
-    "@judgy/expect": "workspace:*",
-    "@judgy/ollama": "workspace:*"
+    "@judgy-ts/core": "workspace:*",
+    "@judgy-ts/expect": "workspace:*",
+    "@judgy-ts/ollama": "workspace:*"
   },
   "devDependencies": {
     "vitest": "^3.2.4"

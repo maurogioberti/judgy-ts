@@ -2,7 +2,7 @@ import type {
   EvaluationResult,
   SemanticAssertionOptions,
   SemanticEvaluationOptions
-} from "@judgy/core";
+} from "@judgy-ts/core";
 
 export interface JudgySemanticMatcherOptions extends SemanticAssertionOptions {
   readonly signal?: AbortSignal;

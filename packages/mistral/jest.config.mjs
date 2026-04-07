@@ -1,8 +1,8 @@
 import { createProjectConfig } from "../../jest.project-config.mjs";
 
 export default createProjectConfig({
-  displayName: "@judgy/mistral",
+  displayName: "@judgy-ts/mistral",
   aliases: {
-    "@judgy/core": "../core/src/index.ts"
+    "@judgy-ts/core": "../core/src/index.ts"
   }
 });

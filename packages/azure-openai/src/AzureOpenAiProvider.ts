@@ -3,7 +3,7 @@ import {
   type LlmResponse,
   type LlmProvider,
   type LlmProviderCallOptions
-} from "@judgy/core";
+} from "@judgy-ts/core";
 
 import { buildChatCompletionsRequestBody } from "./internal/buildChatCompletionsRequestBody.js";
 import { fetchWithTimeout, type FetchLike } from "./internal/fetch.js";

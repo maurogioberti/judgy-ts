@@ -3,7 +3,7 @@ import {
   expect,
   it
 } from "@jest/globals";
-import { judgyMatchers } from "@judgy/expect";
+import { judgyMatchers } from "@judgy-ts/expect";
 
 import {
   createJudgeEvaluator,

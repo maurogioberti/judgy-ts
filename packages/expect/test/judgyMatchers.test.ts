@@ -3,7 +3,7 @@ import { describe, expect, it } from "@jest/globals";
 import {
   EvaluationEvidence,
   EvaluationResult
-} from "@judgy/core";
+} from "@judgy-ts/core";
 
 import {
   judgyMatchers,
@@ -52,7 +52,7 @@ class FakeEvaluator implements SemanticEvaluatorLike {
   }
 }
 
-describe("@judgy/expect", () => {
+describe("@judgy-ts/expect", () => {
   it("passes a semantic match when the evaluation satisfies the minimum score", async () => {
     const evaluator = new FakeEvaluator(0.92);
 

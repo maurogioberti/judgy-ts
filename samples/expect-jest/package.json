@@ -1,12 +1,12 @@
 {
-  "name": "@judgy/sample-expect-jest",
+  "name": "@judgy-ts/sample-expect-jest",
   "version": "0.1.0",
   "type": "module",
   "description": "Jest sample for Judgy TypeScript expect matchers.",
   "dependencies": {
-    "@judgy/core": "workspace:*",
-    "@judgy/expect": "workspace:*",
-    "@judgy/ollama": "workspace:*"
+    "@judgy-ts/core": "workspace:*",
+    "@judgy-ts/expect": "workspace:*",
+    "@judgy-ts/ollama": "workspace:*"
   },
   "devDependencies": {
     "jest": "^30.3.0"

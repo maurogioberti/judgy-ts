@@ -2,22 +2,22 @@
 
 These samples show the two intended TypeScript usage styles for Judgy:
 
-1. The standard high-level pattern: `@judgy/expect`
+1. The standard high-level pattern: `@judgy-ts/expect`
 2. The lower-level semantic pattern: `SemanticEvaluator` plus core semantic policy
 
-Judgy itself is not tied to any specific testing library. The high-level package is `@judgy/expect`, not a Jest- or Vitest-specific package. We include two equivalent `expect(...)` samples only to show that the same high-level Judgy API can be used with both runners.
+Judgy itself is not tied to any specific testing library. The high-level package is `@judgy-ts/expect`, not a Jest- or Vitest-specific package. We include two equivalent `expect(...)` samples only to show that the same high-level Judgy API can be used with both runners.
 
 ## High-level expect pattern
 
-These two samples use the same Paris scenario, the same `OllamaProvider` judge setup, and the same `@judgy/expect` matchers. The only difference is the test runner wiring:
+These two samples use the same Paris scenario, the same `OllamaProvider` judge setup, and the same `@judgy-ts/expect` matchers. The only difference is the test runner wiring:
 
 - `expect-jest/`
   - uses Jest with `expect.extend(judgyMatchers)`
-  - run with `pnpm --filter @judgy/sample-expect-jest test`
+  - run with `pnpm --filter @judgy-ts/sample-expect-jest test`
 
 - `expect-vitest/`
   - uses Vitest with `expect.extend(judgyMatchers)`
-  - run with `pnpm --filter @judgy/sample-expect-vitest test`
+  - run with `pnpm --filter @judgy-ts/sample-expect-vitest test`
 
 The matcher flow is the same in both cases:
 
@@ -34,7 +34,7 @@ This is the TypeScript equivalent of the higher-level .NET sample story, but exp
 - calls a source system via `HttpProvider`
 - evaluates the answer with `OllamaProvider` as judge
 - uses `SemanticEvaluator` and `evaluateSemanticAssertion(...)` directly
-- run with `pnpm --filter @judgy/sample-semantic-evaluation test`
+- run with `pnpm --filter @judgy-ts/sample-semantic-evaluation test`
 
 Flow:
 

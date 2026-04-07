@@ -1,4 +1,4 @@
-import type { JudgySemanticMatcherOptions } from "@judgy/expect";
+import type { JudgySemanticMatcherOptions } from "@judgy-ts/expect";
 
 declare module "vitest" {
   interface Assertion<T = any> {

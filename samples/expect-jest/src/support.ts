@@ -1,5 +1,5 @@
-import { SemanticEvaluator } from "@judgy/core";
-import { OllamaProvider } from "@judgy/ollama";
+import { SemanticEvaluator } from "@judgy-ts/core";
+import { OllamaProvider } from "@judgy-ts/ollama";
 
 import { loadSampleSettings } from "./settings.js";
 

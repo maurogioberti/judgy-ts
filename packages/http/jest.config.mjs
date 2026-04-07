@@ -1,8 +1,8 @@
 import { createProjectConfig } from "../../jest.project-config.mjs";
 
 export default createProjectConfig({
-  displayName: "@judgy/http",
+  displayName: "@judgy-ts/http",
   aliases: {
-    "@judgy/core": "../core/src/index.ts"
+    "@judgy-ts/core": "../core/src/index.ts"
   }
 });

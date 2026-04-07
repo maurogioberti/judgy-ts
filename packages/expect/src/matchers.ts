@@ -3,7 +3,7 @@ import {
   evaluateScoreAssertion,
   evaluateSemanticAssertion,
   formatAssertionFailureMessage
-} from "@judgy/core";
+} from "@judgy-ts/core";
 import type { MatcherContext } from "expect";
 
 import type { JudgySemanticMatcherOptions } from "./contracts.js";

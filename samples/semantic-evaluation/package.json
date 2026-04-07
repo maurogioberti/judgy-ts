@@ -1,12 +1,12 @@
 {
-  "name": "@judgy/sample-semantic-evaluation",
+  "name": "@judgy-ts/sample-semantic-evaluation",
   "version": "0.1.0",
   "type": "module",
   "description": "Semantic evaluation sample for Judgy TypeScript.",
   "dependencies": {
-    "@judgy/core": "workspace:*",
-    "@judgy/http": "workspace:*",
-    "@judgy/ollama": "workspace:*"
+    "@judgy-ts/core": "workspace:*",
+    "@judgy-ts/http": "workspace:*",
+    "@judgy-ts/ollama": "workspace:*"
   },
   "devDependencies": {
     "jest": "^30.3.0"
