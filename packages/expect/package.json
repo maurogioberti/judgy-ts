@@ -1,6 +1,6 @@
 {
   "name": "@judgy-ts/expect",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "High-level expect-style testing package for Judgy TypeScript.",
   "license": "MIT",
   "author": "Mauro Gioberti",

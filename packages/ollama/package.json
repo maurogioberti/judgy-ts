@@ -1,6 +1,6 @@
 {
   "name": "@judgy-ts/ollama",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Ollama provider for Judgy TypeScript.",
   "license": "MIT",
   "author": "Mauro Gioberti",

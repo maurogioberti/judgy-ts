@@ -29,19 +29,17 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
           registry-url: https://registry.npmjs.org
 
-      - name: Determine release package
-        id: package
+      - name: Determine release version
+        id: release
         run: |
-          package_name=$(node -p "require('./packages/core/package.json').name")
-          package_version=$(node -p "require('./packages/core/package.json').version")
+          version=$(node -p "require('./packages/core/package.json').version")
 
-          if [ -z "$package_name" ] || [ -z "$package_version" ]; then
-            echo "Could not determine release package metadata from packages/core/package.json"
+          if [ -z "$version" ]; then
+            echo "Could not determine release version from packages/core/package.json"
             exit 1
           fi
 
-          echo "name=$package_name" >> "$GITHUB_OUTPUT"
-          echo "version=$package_version" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: Ensure publish runs from master
         run: |
@@ -53,24 +51,31 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
-      - name: Build release package
-        run: pnpm --filter @judgy-ts/core build
+      - name: Build packages
+        run: pnpm build
 
-      - name: Typecheck release package
-        run: pnpm --filter @judgy-ts/core typecheck
+      - name: Typecheck packages
+        run: pnpm typecheck:packages
 
-      - name: Test release package
-        run: pnpm --filter @judgy-ts/core test
+      - name: Test packages
+        run: pnpm test
 
-      - name: Pack release package
-        working-directory: packages/core
+      - name: Pack packages
         run: |
-          mkdir -p ../../artifacts/packages
-          pnpm pack --pack-destination ../../artifacts/packages
+          mkdir -p artifacts/packages
+          for dir in packages/*/; do
+            if [ -f "$dir/package.json" ]; then
+              echo "Packing $(node -p "require('./$dir/package.json').name")..."
+              (cd "$dir" && pnpm pack --pack-destination ../../artifacts/packages)
+            fi
+          done
 
-      - name: Verify packaged README
+      - name: Verify packaged READMEs
         run: |
-          tar -tzf artifacts/packages/*.tgz | grep "^package/README.md$"
+          for tgz in artifacts/packages/*.tgz; do
+            echo "Checking $(basename $tgz)..."
+            tar -tzf "$tgz" | grep "^package/README.md$"
+          done
 
       - name: Verify npm auth is configured
         env:
@@ -82,15 +87,20 @@ jobs:
           fi
           npm whoami --registry https://registry.npmjs.org
 
-      - name: Publish package to npm
-        working-directory: packages/core
+      - name: Publish packages to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public
+        run: |
+          for dir in packages/*/; do
+            if [ -f "$dir/package.json" ]; then
+              echo "Publishing $(node -p "require('./$dir/package.json').name")..."
+              (cd "$dir" && npm publish --access public)
+            fi
+          done
 
-      - name: Upload package artifact
+      - name: Upload package artifacts
         uses: actions/upload-artifact@v6
         with:
-          name: judgy-ts-core-${{ steps.package.outputs.version }}
+          name: judgy-ts-packages-${{ steps.release.outputs.version }}
           path: artifacts/packages/*.tgz
           if-no-files-found: error

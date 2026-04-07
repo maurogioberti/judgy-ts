@@ -1,6 +1,6 @@
 {
   "name": "@judgy-ts/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Portable core contracts and policies for Judgy TypeScript.",
   "license": "MIT",
   "author": "Mauro Gioberti",
