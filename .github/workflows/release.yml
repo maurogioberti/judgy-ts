@@ -69,6 +69,10 @@ jobs:
           mkdir -p ../../artifacts/packages
           pnpm pack --pack-destination ../../artifacts/packages
 
+      - name: Verify packaged README
+        run: |
+          tar -tzf artifacts/packages/*.tgz | grep "^package/README.md$"
+
       - name: Publish package to npm
         working-directory: packages/core
         env:
