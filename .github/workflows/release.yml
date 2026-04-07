@@ -1,0 +1,83 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    environment:
+      name: npmjs-org
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+          registry-url: https://registry.npmjs.org
+          scope: "@judgy-ts"
+
+      - name: Determine release package
+        id: package
+        run: |
+          package_name=$(node -p "require('./packages/core/package.json').name")
+          package_version=$(node -p "require('./packages/core/package.json').version")
+
+          if [ -z "$package_name" ] || [ -z "$package_version" ]; then
+            echo "Could not determine release package metadata from packages/core/package.json"
+            exit 1
+          fi
+
+          echo "name=$package_name" >> "$GITHUB_OUTPUT"
+          echo "version=$package_version" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure publish runs from master
+        run: |
+          if [ "${GITHUB_REF}" != "refs/heads/master" ]; then
+            echo "npm publishing is only allowed from master. Current ref: ${GITHUB_REF}"
+            exit 1
+          fi
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build release package
+        run: pnpm --filter @judgy-ts/core build
+
+      - name: Typecheck release package
+        run: pnpm --filter @judgy-ts/core typecheck
+
+      - name: Test release package
+        run: pnpm --filter @judgy-ts/core test
+
+      - name: Pack release package
+        working-directory: packages/core
+        run: |
+          mkdir -p ../../artifacts/packages
+          pnpm pack --pack-destination ../../artifacts/packages
+
+      - name: Publish package to npm
+        working-directory: packages/core
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish --access public --no-git-checks
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ steps.package.outputs.name }}-${{ steps.package.outputs.version }}
+          path: artifacts/packages/*.tgz
+          if-no-files-found: error
