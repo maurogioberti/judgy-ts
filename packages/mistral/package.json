@@ -1,6 +1,6 @@
 {
   "name": "@judgy-ts/mistral",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Mistral provider for Judgy TypeScript.",
   "license": "MIT",
   "author": "Mauro Gioberti",
